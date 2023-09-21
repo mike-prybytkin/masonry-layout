@@ -1,0 +1,58 @@
+@import './masonry-slider';
+
+.method {
+  margin: auto;
+  max-width: 700px;
+  position: relative;
+  height: 50vh;
+  margin-bottom: 180px;
+
+  &_2 {
+    padding-top: 50px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.masonry-wrapper_1 {
+  animation: slideShowVertical 1800s linear infinite;
+  background: url(../assets/img/image_grid_desktop.jpg) no-repeat;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  height: 100%;
+}
+
+
+.method {
+  overflow: hidden;
+  position: relative;
+
+  .masonry-wrapper_2 {
+    position: absolute;
+    top: -100%;
+    animation: moveDown 5s linear infinite;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes slideShowVertical {
+  0% {
+    background-position:0 0
+  }
+  100% {
+    background-position:0 -10000%
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    top: -100%;
+  }
+  
+  100% {
+    top: 0%;
+  }
+}
