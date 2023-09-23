@@ -1,23 +1,19 @@
 import './style/index.scss';
 
-const fetchData = async function () {
-  const baseUrl = 'https://rickandmortyapi.com/api/character/';
+const cardsWrappers = document.querySelectorAll('.masonry-slider__card');
+
+(async function () {
   try {
-    const response = await fetch(baseUrl);
+    const response = await fetch('https://rickandmortyapi.com/api/character/');
     const data = await response.json();
-    renderMasonryCards(data.results);
+    addBackgroundToCard(data.results);
   } catch (error) {
     console.error(error);
     return null;
   }
-};
+})();
 
-fetchData();
-
-const cardsWrappers = document.querySelectorAll('.masonry-slider__card');
-const halfImages = document.querySelectorAll('[data-half-image="true"]');
-
-const renderMasonryCards = (data) => {
+const addBackgroundToCard = (data) => {
   for (let i = 0; i < cardsWrappers.length; i += 1) {
     if (cardsWrappers[i].getAttribute('data-half-image')) {
       cardsWrappers[i].style.backgroundImage = `url(${data[cardsWrappers.length].image})`;
@@ -26,9 +22,3 @@ const renderMasonryCards = (data) => {
     }
   }
 };
-
-const createTemplate = (cadrData) => {
-  console.log(cadrData.image
-    );
-  return `<img src="" alt="${cadrData.name}">`;
-}
